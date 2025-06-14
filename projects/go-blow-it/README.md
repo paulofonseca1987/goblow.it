@@ -7,7 +7,7 @@
 - **Demo:** [goblow.it](https://goblow.it)
 
 ## Description (TL;DR)
-[goblow.it](https://goblow.it) is a simple way to whistleblow a telegram message you received, anonymously, and eventually get rewarded for that leak.
+[goblow.it](https://goblow.it) empowers whistleblowers to anonymously and securely report verifiably true Telegram messages—such as evidence of misconduct, corruption, or unethical behavior—directly to the public, all while protecting their identity. Users can submit their contextual report along with a zkTLS proof of the veracity of the message and receive public or private donations from anyone that cares.
 
 ## Problem
 [What problem does this solve?]
