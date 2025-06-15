@@ -6,7 +6,7 @@
 - **Repository:** [Github repository](https://github.com/paulofonseca1987/goblow.it/tree/main/projects/go-blow-it)
 - **User Flows:** [FigJam](https://www.figma.com/board/96V8WgvzTCaZWilTGMU1JR/blow-it?node-id=0-1&t=aiJEr5h2Ui0i59rD-1)
 - **Design:** [Figma](https://www.figma.com/design/e3VXYvyal2h3qjdLCWQyk3/blow-it?node-id=0-1&t=VpCj1SNxeQZLXEhC-1)
-- **Video:** [Youtube](https://www.youtube.com/watch?v=xvFZjo5PgG0)
+- **Demo Video:** [Youtube](https://www.youtube.com/watch?v=xvFZjo5PgG0)
 - **Live App:** [goblow.it](https://goblow.it)
 
 ## Description (TL;DR)
@@ -31,16 +31,16 @@ None of these options are good.
 With goblow.it you can forward any Telegram message to the Blow It! telegram bot and get a zkTLS proof that guarantees that the author, content, and timestamp of that message (at the time it was forwarded), is in fact verifiably true since that information was indeed transmitted by Telegram's servers. Then, you can publish that message publicly and anonymously, with a private and shielded wallet that can receive public or private donations from people that would like to compensate the whistleblower that leaked that verifiably true Telegram message.
 
 ## Technology Stack
-We are using [TLS Notary](https://tlsnotary.org) for the zkTLS proofs, [Railgun](https://railgun.org) for the shielded and private wallets, Next.js on Vercel for the web app, Cloudflare for DNS, and a small Hetzner server for hosting everything.
+We are using [TLS Notary](https://tlsnotary.org) for the zkTLS proofs, [Railgun](https://railgun.org) for the shielded and private wallets, Next.js on Vercel for the web app with a Supabase database, and a small private server for hosting the railgun wallet generation and the telegram bot.
 
 ## Privacy Impact
-goblow.it actively reduces the privacy of people whose messages get zk proved and publicly leaked. But on the other hand it also makes sure to preserve the privacy and anonymity of the whistleblowers that leak the messages by offering them by default a Railgun shielded and private wallet. We follow the Julian Assange maxim of "Transparency for the powerful, privacy for the powerless" and we take it to the extreme by allowing the powerless to whistleblow on the powerful.
+goblow.it actively reduces the privacy of people whose messages get zk proved and publicly leaked. But on the other hand it also makes sure to preserve the privacy and anonymity of the whistleblowers that leak the messages by offering them, by default, a Railgun shielded and private wallet. We follow the Julian Assange maxim of "Transparency for the powerful, privacy for the powerless" and we take it to the extreme by allowing the powerless to whistleblow on the powerful. As it should be. Also, the whole codebase can be self-hosted and someone that is really worried about their privacy can run their own notary service and railgun generation back-end by themselves. And even deploy a forked version of [goblow.it](https://goblow.it)
 
 ## Real-World Use Cases
-[Who would use this and how?]
+Anybody that has ever received a suspicious Telegram message could use [goblow.it](https://goblow.it) and prove a message and get rewarded for it. This toold provides a safe whistleblowing tech stack for leaking Telegram messages anonymously.
 
 ## Business Logic
-[Sustainability/monetization considerations]
+In the future, we could charge for the publishing of evidences in the future, which would also help to prevent spam. We could have specific pools of funds, for specific communities that want to incentivize and reward whistleblowing, and charge a fee for each case. We could also build a prediction market for which leaks are going to happen in the future, and charge a fee on each bet, that would fund the whistleblower and we could keep a fee.
 
 ## What's Next
-[Future development plans]
+The immediate next steps is to allow whistleblowers to publish evidence privately to a committee, with a time expiration countdown where the evidence becomes public after the time expires. Also, all cases handled by the committee are made transparent after a decision is made. Committees decide how much they pay to each whistleblower from their own pool of funds. We could also expand this project to support other messaging apps like Whatsapp, Signal and the likes. Nobody is safe from being exposed on [goblow.it](https://goblow.it) =)
