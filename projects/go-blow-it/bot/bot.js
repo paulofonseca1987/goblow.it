@@ -2,9 +2,31 @@ const TelegramBot = require('node-telegram-bot-api');
 const { spawn } = require('child_process');
 const path = require('path');
 const https = require('https');
+const fs = require('fs');
+const crypto = require('crypto');
+
+const SUPABASE_URL = 'https://fwkgxhgovwyuxwbjevmg.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ3a2d4aGdvdnd5dXh3Ympldm1nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk5ODc4MjEsImV4cCI6MjA2NTU2MzgyMX0.W4wJ_LndkkYAnobnu2pThsQEWUfj6vl4-8AdaVYocZw';
+
+async function insertEvidence(evidence) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/evidences`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(evidence)
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to insert evidence: ${res.status} ${await res.text()}`);
+  }
+  return await res.json();
+}
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = '8132520944:AAFCm-WgX0wdX6Nz9TCVrBA-ZNwhDLbaHfo';
+const token = '8012154849:AAGazym-JNiaA_ebQ3vK0LsNQccZJpsoP0Q';
 
 // Path to the compiled Rust prover executable
 // Adjust this path if your project structure or target directory is different.
@@ -265,14 +287,49 @@ async function startPollingUpdates() {
                             const generatedPresentationPath = await invokePresenter(attestationPath, secretsPath, presentationOutputPath);
                             console.log(`Presentation generation successful: ${generatedPresentationPath}`);
 
-                            // Send the presentation file back to the user
-                            if (updatesToProcess.length > 0 && updatesToProcess[0].message && updatesToProcess[0].message.chat && updatesToProcess[0].message.chat.id) {
-                                const chatId = updatesToProcess[0].message.chat.id;
-                                try {
-                                    await bot.sendDocument(chatId, generatedPresentationPath, { caption: "Here is the notarization presentation for your message." });
-                                    console.log(`Presentation file sent successfully to chat ${chatId} for ${outputPrefix}`);
-                                } catch (sendError) {
-                                    console.error(`Failed to send presentation file for ${outputPrefix} to chat ${chatId}:`, sendError.message);
+                            // --- Insert Evidence to Supabase ---
+                            try {
+                                // Read the presentation file as a buffer and store as base64
+                                const rawproof = fs.readFileSync(generatedPresentationPath).toString('base64');
+                                // Use the first message in updatesToProcess as the summary source
+                                const msg = updatesToProcess && updatesToProcess[0] && updatesToProcess[0].message ? updatesToProcess[0].message : null;
+                                let messageSummary = {};
+                                if (msg) {
+                                    if (msg.forward_from) messageSummary.forward_from = msg.forward_from;
+                                    if (msg.forward_sender_name) messageSummary.forward_sender_name = msg.forward_sender_name;
+                                    if (msg.forward_origin) messageSummary.forward_origin = msg.forward_origin;
+                                    if (msg.forward_date) messageSummary.forward_date = msg.forward_date;
+                                    if (msg.text) messageSummary.text = msg.text;
+                                }
+                                // Generate a random evidenceid
+                                const evidenceid = crypto.randomUUID ? crypto.randomUUID() : crypto.randomBytes(16).toString('hex');
+                                // Insert evidence
+                                insertEvidence({ evidenceid, messagedata: messageSummary, rawproof })
+                                    .then(res => console.log('Evidence inserted:', res))
+                                    .catch(err => console.error('Failed to insert evidence:', err));
+                            } catch (e) {
+                                console.error('Error preparing or inserting evidence:', e);
+                            }
+
+                            // Send the presentation file back to the user only if it's a forwarded message
+                            if (updatesToProcess.length > 0 && updatesToProcess[0].message) {
+                                const msg = updatesToProcess[0].message; // Get the message object
+                                const chatId = msg.chat.id;
+
+                                // Check if the message is a forwarded message
+                                if (msg.forward_from || msg.forward_sender_name) {
+                                    try {
+                                        await bot.sendDocument(chatId, generatedPresentationPath, { caption: "Here is the notarization presentation for your message." });
+                                        console.log(`Presentation file sent successfully to chat ${chatId} for ${outputPrefix} because it was a forwarded message.`);
+                                        // Send claim link to user
+                                        await bot.sendMessage(chatId, `View your claim: https://goblow.it/claims/flow/${evidenceid}`);
+                                    } catch (sendError) {
+                                        console.error(`Failed to send presentation file for ${outputPrefix} to chat ${chatId}:`, sendError.message);
+                                    }
+                                } else {
+                                    // Message is not a forward, so don't send the presentation.
+                                    // The 'handleUpdate' function will later send the "To prove a message you must forward it..." message.
+                                    console.log(`Presentation for ${outputPrefix} was not sent to chat ${chatId} because the message (ID: ${msg.message_id}) was not a forwarded message.`);
                                 }
                             } else {
                                 console.error(`Could not determine chatId to send presentation for ${outputPrefix}. Updates:`, updatesToProcess);
