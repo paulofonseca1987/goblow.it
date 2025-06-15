@@ -28,10 +28,10 @@ If you show it to someone else, you risk making them unwilling witnesses to a po
 None of these options are good.
 
 ## Solution
-With goblow.it you can forward any Telegram message to the Blow It! telegram bot and get a zkTLS proof that guarantees that the author, content, and timestamp of that message, at the time it was forwarded, is in fact verifiably true because that information was indeed sent by Telegram servers. Then, you can publish that message publicly and anonymously, with a private and shielded wallet that can receive public or private donations from people that would like to compensate the whistleblower that leaked the verifiably true Telegram message.
+With goblow.it you can forward any Telegram message to the Blow It! telegram bot and get a zkTLS proof that guarantees that the author, content, and timestamp of that message (at the time it was forwarded), is in fact verifiably true since that information was indeed transmitted by Telegram's servers. Then, you can publish that message publicly and anonymously, with a private and shielded wallet that can receive public or private donations from people that would like to compensate the whistleblower that leaked that verifiably true Telegram message.
 
 ## Technology Stack
-[List technologies, frameworks, libraries used]
+We are using [TLS Notary](https://tlsnotary.org) for the zkTLS proofs, [Railgun](https://railgun.org) for the shielded and private wallets, Next.js on Vercel for the web app, Cloudflare for DNS, and a small Hetzner server for hosting everything.
 
 ## Privacy Impact
 [How does this improve privacy?]
