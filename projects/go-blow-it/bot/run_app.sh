@@ -23,7 +23,7 @@ echo "Starting notary server in the background..."
 NOTARY_PID=$!
 
 # Add a trap to kill the notary server on script exit (including Ctrl+C).
-trap 'echo "Stopping notary server..."; if [ -n "$NOTARY_PID" ] && kill -0 $NOTARY_PID 2>/dev/null; then kill $NOTARY_PID; fi' EXIT
+trap 'echo "Attempting to stop notary server with pkill -f..."; pkill -f "notary-server" || echo "Notary server not found by pkill -f or already stopped."' EXIT
 
 # Give the server a moment to start up.
 sleep 3
