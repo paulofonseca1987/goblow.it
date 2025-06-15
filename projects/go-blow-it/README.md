@@ -19,16 +19,16 @@ Show it to someone else?
 Report it to the authorities?
 Or just simply take a screenshot of it?
 
-We can probably all agree that it is a very natural human behavior to take a screenshot of a weird/suspicious/incriminating conversation or message, just to have it as insurance, for the future. The issue is that a screenshot is not a good and verifiable piece evidence in this day and age, given that anyone can easily fabricate a screenshot with any content whatsoever.
+We can probably all agree that it is a very natural human behavior to take a screenshot of a weird/suspicious/incriminating conversation or message, just to have it as insurance, for your future self. The issue is that a screenshot is not a good and verifiable piece evidence in this day and age, given that anyone can easily fabricate a screenshot with any content whatsoever.
 
 Also, if you report it to the authorities, you risk them confiscating your phone and access all of your other messages in there.
 
-If you show it to someone else, you make them unwilling witnesses to a potential crime.
+If you show it to someone else, you risk making them unwilling witnesses to a potential crime.
 
-Not ideal.
+None of these options are good.
 
 ## Solution
-[How does your project address the problem?]
+With goblow.it you can forward any Telegram message to the Blow It! telegram bot and get a zkTLS proof that guarantees that the author, content, and timestamp of that message, at the time it was forwarded, is in fact verifiably true because that information was indeed sent by Telegram servers. Then, you can publish that message publicly and anonymously, with a private and shielded wallet that can receive public or private donations from people that would like to compensate the whistleblower that leaked the verifiably true Telegram message.
 
 ## Technology Stack
 [List technologies, frameworks, libraries used]
