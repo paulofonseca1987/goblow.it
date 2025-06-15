@@ -6,7 +6,7 @@
 - **Repository:** [Github repository](https://github.com/paulofonseca1987/goblow.it/tree/main/projects/go-blow-it)
 - **User Flows:** [FigJam](https://www.figma.com/board/96V8WgvzTCaZWilTGMU1JR/blow-it?node-id=0-1&t=aiJEr5h2Ui0i59rD-1)
 - **Design:** [Figma](https://www.figma.com/design/e3VXYvyal2h3qjdLCWQyk3/blow-it?node-id=0-1&t=VpCj1SNxeQZLXEhC-1)
-- **Demo Video:** [Youtube](https://www.youtube.com/watch?v=xvFZjo5PgG0)
+- **Demo Video:** [Google Drive](https://drive.google.com/file/d/1wVESSAhnmYXbyzxEfB_etM-8s12ZULwN/view?usp=sharing)
 - **Live App:** [goblow.it](https://goblow.it)
 
 ## Description (TL;DR)
