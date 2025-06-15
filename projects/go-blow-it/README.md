@@ -34,7 +34,7 @@ With goblow.it you can forward any Telegram message to the Blow It! telegram bot
 We are using [TLS Notary](https://tlsnotary.org) for the zkTLS proofs, [Railgun](https://railgun.org) for the shielded and private wallets, Next.js on Vercel for the web app, Cloudflare for DNS, and a small Hetzner server for hosting everything.
 
 ## Privacy Impact
-[How does this improve privacy?]
+goblow.it actively reduces the privacy of people whose messages get zk proved and publicly leaked. But on the other hand it also makes sure to preserve the privacy and anonymity of the whistleblowers that leak the messages by offering them by default a Railgun shielded and private wallet. We follow the Julian Assange maxim of "Transparency for the powerful, privacy for the powerless" and we take it to the extreme by allowing the powerless to whistleblow on the powerful.
 
 ## Real-World Use Cases
 [Who would use this and how?]
