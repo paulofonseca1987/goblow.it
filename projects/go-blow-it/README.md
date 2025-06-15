@@ -2,7 +2,7 @@
 
 - **Track(s):** Public Goods + User Onboarding
 - **Team/Contributors:** Coco the dog (life coach), [Manu](https://github.com/frosimanuel) (developer), [Peter](https://github.com/petermlyon) (developer), and [Paulo](https://github.com/paulofonseca1987) (designer).
-![hacking goblow.it](https://i.ibb.co/Y7PqFmp0/43e92bb8-a194-45dc-903b-00bd18b1acc0.jpg)
+![hacking goblow.it](https://github.com/paulofonseca1987/goblow.it/blob/main/projects/go-blow-it/teamphoto.jpg?raw=true)
 - **Repository:** [Github repository](https://github.com/paulofonseca1987/goblow.it/tree/main/projects/go-blow-it)
 - **User Flows:** [FigJam](https://www.figma.com/board/96V8WgvzTCaZWilTGMU1JR/blow-it?node-id=0-1&t=aiJEr5h2Ui0i59rD-1)
 - **Design:** [Figma](https://www.figma.com/design/e3VXYvyal2h3qjdLCWQyk3/blow-it?node-id=0-1&t=VpCj1SNxeQZLXEhC-1)
