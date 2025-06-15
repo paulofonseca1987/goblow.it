@@ -3,7 +3,7 @@
 - **Track(s):** Public Goods + User Onboarding
 - **Team/Contributors:** Coco the dog (life coach), [Manu](https://github.com/frosimanuel) (developer), [Peter](https://github.com/petermlyon) (developer), and [Paulo](https://github.com/paulofonseca1987) (designer).
 ![hacking goblow.it](https://github.com/paulofonseca1987/goblow.it/blob/main/projects/go-blow-it/teamphoto.jpg?raw=true)
-- **Repository:** [Github repository](https://github.com/paulofonseca1987/goblow.it/tree/main/projects/go-blow-it)
+- **Repository:** [Github submission repo](https://github.com/paulofonseca1987/goblow.it/tree/main/projects/go-blow-it) + [Github App repo](https://github.com/frosimanuel/blowit) + [Railgun server repo](https://github.com/frosimanuel/railgun_server) + [TLS Notary repo](https://github.com/petermlyon/tlsn)
 - **User Flows:** [FigJam](https://www.figma.com/board/96V8WgvzTCaZWilTGMU1JR/blow-it?node-id=0-1&t=aiJEr5h2Ui0i59rD-1)
 - **Design:** [Figma](https://www.figma.com/design/e3VXYvyal2h3qjdLCWQyk3/blow-it?node-id=0-1&t=VpCj1SNxeQZLXEhC-1)
 - **Demo Video:** [Google Drive](https://drive.google.com/file/d/1wVESSAhnmYXbyzxEfB_etM-8s12ZULwN/view?usp=sharing)
